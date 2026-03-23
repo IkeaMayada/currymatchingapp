@@ -4,7 +4,6 @@ import currymatchingapp.prototype.domain.model.Diagnosis;
 import currymatchingapp.prototype.domain.model.MbtiSubtype;
 import currymatchingapp.prototype.domain.model.MbtiType;
 import currymatchingapp.prototype.domain.repository.DiagnosisRepository;
-import currymatchingapp.prototype.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +15,13 @@ public class DiagnosisService {
     @Autowired
     private DiagnosisRepository diagnosisRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
     public Diagnosis diagnosisCalculation(int[] answers, String gender, String age) {
         Diagnosis diagnosis = new Diagnosis();
+
+        /** TODO:
+         * User関連クラス完成後、
+         * ユーザー情報と紐づけ
+         */
 
         int axis1 = answers[0] + answers[1] + (6 - answers[2]) + (6 - answers[3]) + (6 - answers[4]);
         int axis2 = (6 - answers[5]) + (6 - answers[6]) + (6 - answers[7]) + (6 - answers[8]) + answers[9];
