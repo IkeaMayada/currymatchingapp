@@ -12,13 +12,14 @@ public class Diagnosis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long diagnosisId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
-    private User user;
+    @Column(name = "user_id")
+    private Long userId;
 
-    private String mbtiType;
+    @Enumerated(EnumType.STRING)
+    private MbtiType mbtiType;
 
-    private String mbtiSubtype;
+    @Enumerated(EnumType.STRING)
+    private MbtiSubtype mbtiSubtype;
 
     @Column(name = "axis1_score")
     private Integer axis1;
@@ -35,6 +36,10 @@ public class Diagnosis {
     @Column(name = "axis5_score")
     private Integer axis5;
 
+    private String gender;
+
+    private String age;
+
     private LocalDateTime diagnosedAt;
 
     public Long getDiagnosisId() {
@@ -45,27 +50,31 @@ public class Diagnosis {
         this.diagnosisId = diagnosisId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = Long.parseLong(userId);
     }
 
-    public String getMbtiType() {
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public MbtiType getMbtiType() {
         return mbtiType;
     }
 
-    public void setMbtiType(String mbtiType) {
+    public void setMbtiType(MbtiType mbtiType) {
         this.mbtiType = mbtiType;
     }
 
-    public String getMbtiSubtype() {
+    public MbtiSubtype getMbtiSubtype() {
         return mbtiSubtype;
     }
 
-    public void setMbtiSubtype(String mbtiSubtype) {
+    public void setMbtiSubtype(MbtiSubtype mbtiSubtype) {
         this.mbtiSubtype = mbtiSubtype;
     }
 
@@ -107,6 +116,22 @@ public class Diagnosis {
 
     public void setAxis5(Integer axis5) {
         this.axis5 = axis5;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public LocalDateTime getDiagnosedAt() {

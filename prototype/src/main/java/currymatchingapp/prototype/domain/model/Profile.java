@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class Profile {
 
     @Id
+    @Column(name = "user_id")
     private Long userId;
 
     @OneToOne(fetch = FetchType.LAZY)
