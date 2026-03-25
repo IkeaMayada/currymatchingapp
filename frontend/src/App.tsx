@@ -3,15 +3,14 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './Diagnosis/Header/Header';
 import QuestionCard from './Diagnosis/QuestionCard/QuestionCard';
+import DiagnosisBody from './Diagnosis/Body/Body';
 
 function App() {
     return (
         <BrowserRouter>
             <div className={"App"}>
                 <Header />
-                <main>
-                    <h1>Hello World</h1>
-                </main>
+                <DiagnosisBody />
                 <footer>
                 </footer>
             </div>

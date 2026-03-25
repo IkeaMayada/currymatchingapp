@@ -1,1 +1,27 @@
-INSERT INTO `questionnaire`
+DELETE FROM questionnaire;
+
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (1, 3, 'コーヒーはブラックで飲む', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (2, 5, '日常のルーティンが乱れるとイライラする', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (3, 1, '同じ日常が続くと退屈しちゃうタイプだ', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (4, 2, 'カレーは飲み物である', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (5, 4, 'ラーメン屋に行くと、ついいろいろトッピングしちゃう', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (6, 3, 'マーラータン、韓国料理など舌がしびれるほど辛い食べ物が好きだ', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (7, 1, '海外旅行に行くなら、ヨーロッパの綺麗な街並みを旅したい', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (8, 5, '旅行をするときは、計画に沿って行動するより、突発的なイベントを楽しみたいタイプだ', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (9, 4, 'ご飯を食べるためにおかずを食べるタイプだ', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (10, 2, '余った汁で作る締めの雑炊こそ鍋の醍醐味である', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (11, 3, '正論をぶつけるより、思いやりを持って伝えることが大事だ', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (12, 5, '新しいお店を開拓するより、行きつけのお店を優先したい', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (13, 1, '食べたことのない、新しいことにチャレンジすることが好きだ', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (14, 4, 'ピザを頼むときは、マルゲリータやペパロニなどシンプルなものを選ぶ', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (15, 2, 'ヨーグルトは固体より飲むタイプが好き', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (16, 3, '眠気を覚ますために辛いガムをかむ', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (17, 5, '意見が衝突した場面では、自分の主張を最後まで突き通す', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (18, 1, 'カレーはライスと食べるべきだと思う', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (19, 4, 'ラーメン屋でよく替え玉をする', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (20, 2, 'ちゃんぽんよりかは皿うどん派だ', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (21, 3, '友人から「甘党だね」とよく言われる', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (22, 5, '自分のセンスには自信がある', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (23, 1, '外食よりは家で作るご飯の方が好きだ', TRUE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (24, 4, '友達と外食に行くと、いろんな料理を頼んでシェアして全部食べてみたい', FALSE);
+INSERT INTO questionnaire (questionnaire_id, questionnaire_type, question, reversed_score) VALUES (25, 2, 'LINEのグループは通知オフにしがち', TRUE);TRUE);
