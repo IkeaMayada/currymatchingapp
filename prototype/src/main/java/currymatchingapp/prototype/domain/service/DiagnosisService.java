@@ -79,4 +79,11 @@ public class DiagnosisService {
         return diagnosisRepository.findById(diagnosisId).orElse(null);
     }
 
+    public List<Questionnaire> findAllQuestionnaires() {
+        return questionnaireRepository.findAll();
+    }
+
+    public Questionnaire findQuestionnaire(Integer questionnaireId) {
+        return questionnaireRepository.findById(questionnaireId).orElse(null);
+    }
 }

@@ -1,0 +1,15 @@
+.link-button {
+    display: block;                /* リンクをブロック化（範囲を広げる） [5] */
+    padding: 15px 25px;            /* クリック領域を広げる余白 [5] */
+    background-color: #007bff;     /* 背景色 */
+    color: white;                  /* 文字色 */
+    text-decoration: none;         /* 下線を消す [1] */
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;               /* マウスカーソルを指の形に [2] */
+    transition: background-color 0.3s; /* ホバー時のアニメーション */
+}
+
+.link-button:hover {
+    background-color: #0056b3; /* ホバー時の背景色 */
+}
