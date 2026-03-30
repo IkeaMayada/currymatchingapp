@@ -25,10 +25,12 @@ function DiagnosisBody() {
 
     const handleNextPage = () => {
         setCurrentPage(currentPage + 1);
+        window.scrollTo({ top : 0, behavior: 'smooth'})
     };
 
     const handlePrevPage = () => {
         setCurrentPage(currentPage - 1);
+        window.scrollTo({ top : 0, behavior: 'smooth'})
     }
 
     const navigate = useNavigate();
@@ -61,7 +63,7 @@ function DiagnosisBody() {
         <div>
             {questions.slice((currentPage - 1) * 10, currentPage * 10).map((question, index) => (
                 <QuestionCard
-                    key={index}
+                    key={question.questionnaireId}
                     question={question.question}
                     onAnswer={(score) => handleAnswer(score, (currentPage - 1) * 10 + index)}
                 />
