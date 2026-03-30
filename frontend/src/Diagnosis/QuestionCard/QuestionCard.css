@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+.button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 0.4em;
+    transition: ease-in-out 0.2s;
+}
+
+.button-display{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+    padding: 0.5em 0.1em;
+}
+
+.button:hover {
+    background-color: transparent;
+    transform: rotate(5deg);
+    transform: translateY(-5px);
+    transform: scale(1.1);
+    transition: ease-in-out 0.15s;
+}
+
+.button:active {
+    background-color: transparent;
+    transform: rotate(30deg);
+    transition: ease-in-out 0.1s;
+}
+
+.button-label-left{
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 18%;
+    color: #F8EB34;
+    text-align: right;
+    margin-bottom: 0.5em;
+}
+
+.button-label-right{
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 18%;
+    color: #7DF2FF;
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
+.question-box{
+    justify-content: center;
+    padding: 0.01em 4em;
+    margin: 0.1em auto 1em auto;
+    color: #FFF;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    width: 50%;
+}
+
+.question-card-text {
+    display: flex;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.2em;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #f834a4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
