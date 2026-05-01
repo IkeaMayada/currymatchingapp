@@ -1,6 +1,11 @@
 package currymatchingapp.prototype.domain.service;
 
-import currymatchingapp.prototype.domain.model.Questionnaire;
+import currymatchingapp.prototype.app.dto.DiagnosisResponse;
+import currymatchingapp.prototype.domain.model.*;
+import currymatchingapp.prototype.domain.repository.MbtiSubtypeRepository;
+import currymatchingapp.prototype.domain.repository.MbtiTypeRepository;
+import currymatchingapp.prototype.domain.repository.DiagnosisRepository;
+import currymatchingapp.prototype.domain.repository.QuestionnaireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -9,14 +14,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import currymatchingapp.prototype.domain.model.Diagnosis;
-import currymatchingapp.prototype.domain.model.MbtiSubtype;
-import currymatchingapp.prototype.domain.model.MbtiType;
-import currymatchingapp.prototype.domain.repository.DiagnosisRepository;
-import currymatchingapp.prototype.domain.repository.QuestionnaireRepository;
-
-import javax.swing.*;
 
 @Service
 public class DiagnosisService {
@@ -27,8 +24,15 @@ public class DiagnosisService {
     @Autowired
     private QuestionnaireRepository questionnaireRepository;
 
-    public Diagnosis diagnosisCalculation(int[] answers, String gender, String age) {
+    @Autowired
+    private MbtiTypeRepository mbtiTypeRepository;
+
+    @Autowired
+    private MbtiSubtypeRepository mbtiSubtypeRepository;
+
+    public DiagnosisResponse diagnosisCalculation(int[] answers, String gender, String age) {
         Diagnosis diagnosis = new Diagnosis();
+        DiagnosisResponse diagnosisResponse = new DiagnosisResponse();
         List<Questionnaire> qList = questionnaireRepository.findAll(Sort.by(Sort.Direction.ASC, "questionnaireId"));
         Map<Integer, Integer> questionTotal = new HashMap<>();
 
@@ -65,14 +69,27 @@ public class DiagnosisService {
                 + (axis3 >= 15 ? "K" : "A")
                 + (axis4 >= 15 ? "G" : "R");
 
-        diagnosis.setMbtiType(MbtiType.valueOf(type));
-        diagnosis.setMbtiSubtype(axis5 >= 15 ? MbtiSubtype.KODAWARI : MbtiSubtype.FLEXIBLE);
+        diagnosis.setMbtiType(MbtiTypeEnum.valueOf(type));
+        diagnosis.setMbtiSubtype(axis5 >= 15 ? MbtiSubtypeEnum.KODAWARI : MbtiSubtypeEnum.FLEXIBLE);
         diagnosis.setGender(gender);
         diagnosis.setAge(age);
         diagnosis.setDiagnosedAt(LocalDateTime.now());
 
         diagnosisRepository.save(diagnosis);
-        return diagnosis;
+
+        MbtiType mbtiTypeData = mbtiTypeRepository.findById(diagnosis.getMbtiType()).orElseThrow();
+        MbtiSubtype mbtiSubtypeData = mbtiSubtypeRepository.findById(diagnosis.getMbtiSubtype()).orElseThrow();
+
+        diagnosisResponse.setMbtiType(diagnosis.getMbtiType());
+        diagnosisResponse.setMbtiSubtype(diagnosis.getMbtiSubtype());
+        diagnosisResponse.setMbtiName(mbtiTypeData.getMbtiName());
+        diagnosisResponse.setMbtiSummary(mbtiTypeData.getMbtiSummary());
+        diagnosisResponse.setMbtiDescription(mbtiTypeData.getMbtiDescription());
+        diagnosisResponse.setMbtiImage(mbtiTypeData.getMbtiImage());
+        diagnosisResponse.setSubtypeName(mbtiSubtypeData.getSubtypeName());
+        diagnosisResponse.setSubtypeDescription(mbtiSubtypeData.getSubtypeDescription());
+
+        return diagnosisResponse;
     }
 
     public Diagnosis findDiagnosis(Long diagnosisId) {
@@ -81,6 +98,10 @@ public class DiagnosisService {
 
     public List<Questionnaire> findAllQuestionnaires() {
         return questionnaireRepository.findAll();
+    }
+
+    public List<MbtiType> findAllMbtiTypes() {
+        return mbtiTypeRepository.findAll();
     }
 
     public Questionnaire findQuestionnaire(Integer questionnaireId) {

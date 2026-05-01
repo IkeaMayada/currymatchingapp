@@ -16,10 +16,10 @@ public class Diagnosis {
     private Long userId;
 
     @Enumerated(EnumType.STRING)
-    private MbtiType mbtiType;
+    private MbtiTypeEnum mbtiTypeEnum;
 
     @Enumerated(EnumType.STRING)
-    private MbtiSubtype mbtiSubtype;
+    private MbtiSubtypeEnum mbtiSubtypeEnum;
 
     @Column(name = "axis1_score")
     private Integer axis1;
@@ -62,20 +62,20 @@ public class Diagnosis {
         this.userId = userId;
     }
 
-    public MbtiType getMbtiType() {
-        return mbtiType;
+    public MbtiTypeEnum getMbtiType() {
+        return mbtiTypeEnum;
     }
 
-    public void setMbtiType(MbtiType mbtiType) {
-        this.mbtiType = mbtiType;
+    public void setMbtiType(MbtiTypeEnum mbtiTypeEnum) {
+        this.mbtiTypeEnum = mbtiTypeEnum;
     }
 
-    public MbtiSubtype getMbtiSubtype() {
-        return mbtiSubtype;
+    public MbtiSubtypeEnum getMbtiSubtype() {
+        return mbtiSubtypeEnum;
     }
 
-    public void setMbtiSubtype(MbtiSubtype mbtiSubtype) {
-        this.mbtiSubtype = mbtiSubtype;
+    public void setMbtiSubtype(MbtiSubtypeEnum mbtiSubtypeEnum) {
+        this.mbtiSubtypeEnum = mbtiSubtypeEnum;
     }
 
     public Integer getAxis1() {

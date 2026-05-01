@@ -1,15 +1,13 @@
-package currymatchingapp.prototype.domain.model;
+package currymatchingapp.prototype.app.dto;
 
-import jakarta.persistence.*;
+import currymatchingapp.prototype.domain.model.MbtiSubtypeEnum;
+import currymatchingapp.prototype.domain.model.MbtiTypeEnum;
 
-@Entity
-@Table(name = "mbti_types")
-public class MbtiType {
+public class DiagnosisResponse {
 
-    @Id
-    @Column(name = "mbti_type")
-    @Enumerated(EnumType.STRING)
     private MbtiTypeEnum mbtiType;
+
+    private MbtiSubtypeEnum mbtiSubtype;
 
     private String mbtiName;
 
@@ -17,8 +15,11 @@ public class MbtiType {
 
     private String mbtiDescription;
 
-    @Column(name = "mbti_image_url")
     private String mbtiImage;
+
+    private String subtypeName;
+
+    private String subtypeDescription;
 
     public MbtiTypeEnum getMbtiType() {
         return mbtiType;
@@ -26,6 +27,14 @@ public class MbtiType {
 
     public void setMbtiType(MbtiTypeEnum mbtiType) {
         this.mbtiType = mbtiType;
+    }
+
+    public MbtiSubtypeEnum getMbtiSubtype() {
+        return mbtiSubtype;
+    }
+
+    public void setMbtiSubtype(MbtiSubtypeEnum mbtiSubtype) {
+        this.mbtiSubtype = mbtiSubtype;
     }
 
     public String getMbtiName() {
@@ -58,6 +67,22 @@ public class MbtiType {
 
     public void setMbtiImage(String mbtiImage) {
         this.mbtiImage = mbtiImage;
+    }
+
+    public String getSubtypeName() {
+        return subtypeName;
+    }
+
+    public void setSubtypeName(String subtypeName) {
+        this.subtypeName = subtypeName;
+    }
+
+    public String getSubtypeDescription() {
+        return subtypeDescription;
+    }
+
+    public void setSubtypeDescription(String subtypeDescription) {
+        this.subtypeDescription = subtypeDescription;
     }
 
 }

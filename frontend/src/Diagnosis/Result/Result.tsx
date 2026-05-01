@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 
 function Result() {
     const location = useLocation();
 
     const data = location.state;
+
+
 
     return (
         <div>
