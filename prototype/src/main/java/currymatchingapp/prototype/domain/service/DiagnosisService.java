@@ -31,8 +31,12 @@ public class DiagnosisService {
     private MbtiSubtypeRepository mbtiSubtypeRepository;
 
     public DiagnosisResponse diagnosisCalculation(int[] answers, String gender, String age) {
+        Diagnosis diagnosis = calculateAndSave(answers, gender, age);
+        return buildResponse(diagnosis);
+    }
+
+    private Diagnosis calculateAndSave(int[] answers, String gender, String age){
         Diagnosis diagnosis = new Diagnosis();
-        DiagnosisResponse diagnosisResponse = new DiagnosisResponse();
         List<Questionnaire> qList = questionnaireRepository.findAll(Sort.by(Sort.Direction.ASC, "questionnaireId"));
         Map<Integer, Integer> questionTotal = new HashMap<>();
 
@@ -77,18 +81,24 @@ public class DiagnosisService {
 
         diagnosisRepository.save(diagnosis);
 
-        MbtiType mbtiTypeData = mbtiTypeRepository.findById(diagnosis.getMbtiType()).orElseThrow();
-        MbtiSubtype mbtiSubtypeData = mbtiSubtypeRepository.findById(diagnosis.getMbtiSubtype()).orElseThrow();
+        return diagnosis;
+    }
+
+    private DiagnosisResponse buildResponse(Diagnosis diagnosis){
+        DiagnosisResponse diagnosisResponse = new DiagnosisResponse();
 
         diagnosisResponse.setMbtiType(diagnosis.getMbtiType());
         diagnosisResponse.setMbtiSubtype(diagnosis.getMbtiSubtype());
+
+        MbtiType mbtiTypeData = mbtiTypeRepository.findById(diagnosis.getMbtiType()).orElseThrow();
+        MbtiSubtype mbtiSubtypeData = mbtiSubtypeRepository.findById(diagnosis.getMbtiSubtype()).orElseThrow();
+
         diagnosisResponse.setMbtiName(mbtiTypeData.getMbtiName());
         diagnosisResponse.setMbtiSummary(mbtiTypeData.getMbtiSummary());
         diagnosisResponse.setMbtiDescription(mbtiTypeData.getMbtiDescription());
         diagnosisResponse.setMbtiImage(mbtiTypeData.getMbtiImage());
         diagnosisResponse.setSubtypeName(mbtiSubtypeData.getSubtypeName());
         diagnosisResponse.setSubtypeDescription(mbtiSubtypeData.getSubtypeDescription());
-
         return diagnosisResponse;
     }
 
